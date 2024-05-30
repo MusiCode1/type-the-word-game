@@ -41,12 +41,11 @@ img {
     align-items: center;
     width: 100%;
     max-width: 80vw;
-    margin: 2vh auto;
 }
 
 .input-container input {
     padding: 1vh;
-    font-size: 3vh;
+    font-size: 5vh;
     border-radius: 1vh;
     border: 0.5vh solid #ccc;
     outline: none;
