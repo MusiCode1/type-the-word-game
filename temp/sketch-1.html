@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+        * {
+
+            box-sizing: border-box;
+
+            border: rgb(83, 83, 83) 2px solid;
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100svh;
+            margin: 0;
+        }
+
+        .main-container {
+            width: 100%;
+            height: 100%;
+
+            padding: 2vh;
+
+            background-color: rgb(241, 148, 167);
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 2vh;
+
+            width: 100%;
+            height: 100%;
+
+            background-color: blueviolet;
+        }
+
+        .content-container * {
+            width: 70svh;
+            max-width: 100%;
+        }
+
+        .cards-container {
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2vh;
+
+          /*   height: 30%; */
+
+            padding: 2vh;
+
+            background-color: #f0f0f0;
+        }
+
+        .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            flex-grow: 1;
+
+            text-align: center;
+
+            font-size: min(18vh, 18vw);
+
+            aspect-ratio: 1/1;
+            background-color: #5ce2e7;
+        }
+
+        .image-container {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: bisque;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .input-container {
+            height: 10%;
+        }
+
+        .input-container input {
+            width: 100%;
+            height: 100%;
+
+            font-size: 5vh;
+
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="content-container">
+            <div class="cards-container">
+
+                <div class="card">1</div>
+                <div class="card">2</div>
+                <div class="card">3</div>
+            </div>
+
+            <div class="image-container">
+                <img src="https://www.smartcut.co.il/wp-content/uploads/2020/05/%D7%91%D7%A8-%D7%9E%D7%99%D7%9D-%D7%97%D7%9B%D7%9D.png"
+                    alt="תיאור התמונה">
+            </div>
+
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="הקלד/י את המילה כאן" title="הקלד/י את המילה כאן">
+            </div>
+        </div>
+    </div>
+
+    <script>
+    </script>
+</body>
+
+</html>

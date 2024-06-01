@@ -1,0 +1,152 @@
+[
+    {
+        "firstName": "דוד",
+        "lastName": "שטרן",
+        "className": "כיתת הרב קינד"
+    },
+    {
+        "firstName": "לוי יצחק",
+        "lastName": "אשכנזי",
+        "className": "כיתת הרב קינד"
+    },
+    {
+        "firstName": "יוסף יצחק",
+        "lastName": "קורקוס",
+        "className": "כיתת הרב קינד"
+    },
+    {
+        "firstName": "ישראל",
+        "lastName": "קופל",
+        "className": "כיתת הרב קינד"
+    },
+    {
+        "firstName": "פנחס מנחם",
+        "lastName": "פרוימן",
+        "className": "כיתת הרב קינד"
+    },
+    {
+        "firstName": "מנחם מענדל",
+        "lastName": "קורקוס",
+        "className": "כיתת הרב לבקוביץ"
+    },
+    {
+        "firstName": "פנחס עקיבא",
+        "lastName": "ליכטינשטין",
+        "className": "כיתת הרב לבקוביץ"
+    },
+    {
+        "firstName": "ישראל אריה לייב",
+        "lastName": "פויגל",
+        "className": "כיתת הרב לבקוביץ"
+    },
+    {
+        "firstName": "ישי",
+        "lastName": "אלרוב",
+        "className": "כיתת הרב לבקוביץ"
+    },
+    {
+        "firstName": "דוד",
+        "lastName": "מויאל",
+        "className": "כיתת הרב לבקוביץ"
+    },
+    {
+        "firstName": "צוריאל",
+        "lastName": "שילה",
+        "className": "כיתת הרב לבקוביץ"
+    },
+    {
+        "firstName": "ישראל",
+        "lastName": "לויטין",
+        "className": "כיתת הרב לבקוביץ"
+    },
+    {
+        "firstName": "מתניה",
+        "lastName": "קורנווסר",
+        "className": "כיתת הרב שבת"
+    },
+    {
+        "firstName": "אברהם",
+        "lastName": "מאירוב",
+        "className": "כיתת הרב שבת"
+    },
+    {
+        "firstName": "יצחק משה",
+        "lastName": "כהן",
+        "className": "כיתת הרב שבת"
+    },
+    {
+        "firstName": "יוסף",
+        "lastName": "פישמן",
+        "className": "כיתת הרב שבת"
+    },
+    {
+        "firstName": "ראובן",
+        "lastName": "להב",
+        "className": "כיתת הרב שבת"
+    },
+    {
+        "firstName": "אלעזר מנחם",
+        "lastName": "מינקוביץ",
+        "className": "כיתת הרב שבת"
+    },
+    {
+        "firstName": "משה",
+        "lastName": "ליצמן",
+        "className": "כיתת הרב שוורץ"
+    },
+    {
+        "firstName": "שמואל חיים",
+        "lastName": "גוטמן",
+        "className": "כיתת הרב שוורץ"
+    },
+    {
+        "firstName": "יוסף דוד",
+        "lastName": "הירש",
+        "className": "כיתת הרב שוורץ"
+    },
+    {
+        "firstName": "בנימין",
+        "lastName": "גליקרוב",
+        "className": "כיתת הרב שוורץ"
+    },
+    {
+        "firstName": "ניסים",
+        "lastName": "מויאל",
+        "className": "כיתת הרב שוורץ"
+    },
+    {
+        "firstName": "מאיר",
+        "lastName": "אלוש",
+        "className": "כיתת הרב שוורץ"
+    },
+    {
+        "firstName": "ישראל",
+        "lastName": "גולדמן",
+        "className": "כיתת הרב קליין"
+    },
+    {
+        "firstName": "מורדכי",
+        "lastName": "גרינוולד",
+        "className": "כיתת הרב קליין"
+    },
+    {
+        "firstName": "חיים",
+        "lastName": "זאדה",
+        "className": "כיתת הרב קליין"
+    },
+    {
+        "firstName": "מורדכי",
+        "lastName": "טראב",
+        "className": "כיתת הרב קליין"
+    },
+    {
+        "firstName": "יהודה",
+        "lastName": "גליקרוב",
+        "className": "כיתת הרב קליין"
+    },
+    {
+        "firstName": "יוסף",
+        "lastName": "שפיצר",
+        "className": "כיתת הרב קליין"
+    }
+]

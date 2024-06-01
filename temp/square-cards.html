@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דוגמת Flexbox</title>
+    <style>
+        * {
+
+            box-sizing: border-box;
+
+            border: rgb(116, 116, 116) 2px solid;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            padding: 3vw;
+
+            background-color: #d199d7;
+
+        }
+
+        .card-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+
+            gap: 3vh;
+            padding: 3vh;
+            background-color: #9e99d7;
+        }
+
+        .child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+
+            font-size: 2rem;
+            background-color: #d0d0d0;
+            text-align: center;
+            line-height: 10vh;
+            aspect-ratio: 1/1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card-container">
+            <div class="child">1</div>
+            <div class="child">2</div>
+            <div class="child">3</div>
+        </div>
+    </div>
+</body>
+
+</html>

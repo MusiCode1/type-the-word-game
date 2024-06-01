@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ישיבת לב טוב</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>שלום ברוכים הבאים לאתר של ישיבת לב טוב</h1>
+    <h4>הכיתות</h4>
+    <div>
+        <button id="kind" type="button">כיתת הרב קינד</button>
+        <button id="levkovith">כיתת הרב לבקוביץ</button>
+        <button id="shabat">כיתת הרב שבת</button>
+        <button id="shvarz">כיתת הרב שוורץ</button>
+        <button id="klain">כיתת הרב קלין</button>
+    </div>
+    <p>תלמיד</p>
+    <input type="search" id="search">
+    <button id="bot" type="button">לחיפוש</button>
+    <div id="plaz"></div>
+    <script type="module">
+
+        let studentsList = [];
+
+        fetch('./students-list.json')
+            .then(response => response.json())
+            .then(data => {
+                studentsList = data
+            });
+
+        console.log(studentsList);
+
+
+        //יצירת כפתורים
+        const buttons = [
+            document.getElementById('kind'),
+            document.getElementById('levkovith'),
+            document.getElementById('shabat'),
+            document.getElementById('shvarz'),
+            document.getElementById('klain')
+        ]
+        // הגדרת הכפתורים
+        buttons[0].addEventListener('click', (event) => {
+            let h = document.createElement('h4');
+            h.innerHTML = 'כיתת הרב קינד'
+            document.body.appendChild(h)
+            let kindc = [kupel, froyman, leivi, dudi, yosef_izchak];
+            for (let i = 0; i < 5; i++) {
+                let s = kindc[i].שם + ' ' + kindc[i].משפחה
+
+                let p = document.createElement('p');
+
+                p.innerHTML = s;
+
+                document.body.appendChild(p)
+            }
+        })
+        buttons[1].addEventListener('click', (event) => {
+            let h = document.createElement('h4');
+            h.innerHTML = 'כיתת הרב לבקוביץ'
+            document.body.appendChild(h)
+            let kindc = [mendel, pinhas, daviv, yishai, ysrael, zuriel, srulik];
+            for (let i = 0; i < 7; i++) {
+                let s = kindc[i].שם + ' ' + kindc[i].משפחה
+
+                let p = document.createElement('p');
+                p.innerHTML = s;
+                document.body.appendChild(p)
+            }
+        })
+        buttons[2].addEventListener('click', (event) => {
+            let h = document.createElement('h4');
+            h.innerHTML = 'כיתת הרב שבת'
+            document.body.appendChild(h)
+            let kindc = [matanya, avram, yosi, reuven, yzhak_moshe, elazar];
+            for (let i = 0; i < 6; i++) {
+                let s = kindc[i].שם + ' ' + kindc[i].משפחה
+
+                let p = document.createElement('p');
+                p.innerHTML = s;
+                document.body.appendChild(p)
+            }
+        })
+        buttons[3].addEventListener('click', (event) => {
+            let h = document.createElement('h4');
+            h.innerHTML = 'כיתת הרב שורץ'
+            document.body.appendChild(h)
+            let kindc = [meir, moysi, binyamin, nisim, smuel, hirs];
+            for (let i = 0; i < 6; i++) {
+                let s = kindc[i].שם + ' ' + kindc[i].משפחה
+
+                let p = document.createElement('p');
+                p.innerHTML = s;
+                document.body.appendChild(p)
+            }
+        })
+        buttons[4].addEventListener('click', (event) => {
+            let h = document.createElement('h4');
+            h.innerHTML = 'כיתת הרב קליין'
+            document.body.appendChild(h)
+            let kindc = [moti, mordehai, goldman, haim, spizer, yeuda];
+            for (let i = 0; i < 6; i++) {
+                let s = kindc[i].שם + ' ' + kindc[i].משפחה
+
+                let p = document.createElement('p');
+                p.innerHTML = s;
+                document.body.appendChild(p)
+            }
+        })
+        buttons[4].style.backgroundColor = 'red';
+        buttons[3].style.backgroundColor = 'blue';
+        buttons[2].style.backgroundColor = 'orange';
+        buttons[1].style.backgroundColor = 'green';
+        buttons[0].style.backgroundColor = 'yellow';
+        //יצירת מפתחות אוטומטית
+        function names(name, famely) {
+            let a = {
+                שם: name,
+                משפחה: famely
+            };
+            return a
+        };
+        // הגדרת שורת חיפוש וכפתור לחיפוש
+        let search = [
+            document.getElementById('search'),
+            document.getElementById('bot'),
+            document.getElementById('plaz'),
+        ];
+        // קבלת הכפתור
+        search[1].addEventListener('click', (value) => {
+            let i = document.createElement('p')
+            i.innerHTML = search[0].value
+            search[2].appendChild(i)
+            // הגדרת החיפוש
+            Hipus = new RegExp(search[0].value);
+            for (let i = 0; i < 30; i++) {
+                let f = yesivat_lev_tov[i].שם
+                const makom_hipus = f
+                const totah = hipus.test(makom_hipus);
+                console.log(totah);
+                let tozah
+                let jj = document.createElement('div')
+                if (totah == true) {
+                    jj.innerHTML = 'יש'
+                } else {
+                    jj.innerHTML = 'אין'
+                }
+                document.body.appendChild(jj)
+            }
+        });
+
+        let sssssssss = {
+            name: 'eee',
+            ppp: [
+                nnn = 'fhf'
+            ]
+        }
+
+        console.log(sssssssss);
+    </script>
+</body>
+
+</html>

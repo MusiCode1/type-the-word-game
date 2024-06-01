@@ -17,21 +17,21 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    /* background-color: #f0f0f0; */
 }
 
 .image-container {
     width: 100%;
-    max-width: 80vw;
-    margin: 3vh auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-img {
-    height: auto;
-    display: block;
+.image-container img {
+
     max-width: 100%;
     max-height: 40vh;
-    margin: 0 auto;
-    border-radius: 2vh;
     object-fit: contain;
 }
 
