@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דוגמת Flexbox</title>
+    <style>
+        :root {
+            --updated-width: 0px;
+        }
+
+        * {
+            box-sizing: border-box;
+            border: rgb(116, 116, 116) 2px solid;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            padding: 3vw;
+            background-color: #d199d7;
+        }
+
+        .card-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: calc(100% - var(--updated-width));
+            /* height: 100%; */
+            gap: 3vh;
+            padding: 3vh;
+            background-color: #9e99d7;
+        }
+
+        .child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            aspect-ratio: 1/1;
+            font-size: 2rem;
+            background-color: #d0d0d0;
+            text-align: center;
+            line-height: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="child">1</div>
+            <div class="child">2</div>
+            <div class="child">3</div>
+        </div>
+    </div>
+
+    <script>
+        // פונקציה לעדכון הרוחב של האלמנט בהתאם להפחתה באורך
+        function updateElementWidth(element, heightReduction) {
+            // קבלת הרוחב והאורך הנוכחיים של האלמנט
+            const currentWidth = element.offsetWidth;
+            const currentHeight = element.offsetHeight;
+
+            const currentUpdatedWidth = Number(
+                getComputedStyle(document.documentElement)
+                    .getPropertyValue('--updated-width').replace('px', '')
+            );
+
+            console.log('Current:', 'Width:', currentWidth, 'Height:', currentHeight);
+
+            // חישוב היחס בין הרוחב לאורך
+            const widthToHeightRatio = currentWidth / currentHeight;
+
+            // חישוב ההפחתה הנדרשת ברוחב
+            const widthReduction = heightReduction * widthToHeightRatio;
+
+            /*             // חישוב הרוחב החדש של האלמנט
+                        const newWidth = currentWidth - widthReduction;
+            
+                        // עדכון הסגנון של האלמנט עם הרוחב החדש
+                        element.style.width = newWidth + 'px'; */
+
+            console.log('Updated:', 'Width:', element.offsetWidth, 'Height:', element.offsetHeight);
+            console.log('Width reduction:', widthReduction);
+            document.querySelector(':root').style.setProperty('--updated-width', (widthReduction + currentUpdatedWidth) + 'px');
+        }
+
+        // דוגמה לשימוש בפונקציה
+        const myElement = document.querySelector('.card-container');
+
+        onresize = (e) => {
+            console.log(e);
+        }
+
+        let previousWidth = window.innerWidth;
+        let previousHeight = window.innerHeight;
+
+        window.addEventListener('resize', function () {
+            const currentWidth = window.innerWidth;
+            const currentHeight = window.innerHeight;
+
+            const widthChange = currentWidth - previousWidth;
+            const heightChange = currentHeight - previousHeight;
+
+            console.log('שינוי ברוחב:', widthChange, 'פיקסלים');
+            console.log('שינוי באורך:', heightChange, 'פיקסלים');
+
+            if (heightChange !== 0)
+                updateElementWidth(myElement, -heightChange);
+
+            previousWidth = currentWidth;
+            previousHeight = currentHeight;
+        });
+    </script>
+</body>
+
+</html>

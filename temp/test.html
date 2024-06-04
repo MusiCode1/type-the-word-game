@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            /* outline: 2px solid red; */
+        }
+
+        body {
+            margin: 0;
+            height: 100dvh;
+        }
+
+        .main-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .square {
+            width: 100%;
+            flex: 1;
+            background-color: #5ce2e7;
+            border: 4px solid #239095;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .keyboard {
+            width: 100%;
+            height: env(keyboard-inset-height);
+
+            transition: all 0.3s;
+
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            width: 100%;
+            padding: 20px;
+            max-width: 100dvh;
+        }
+
+        .card {
+            flex: 1;
+            /* max-width: 30%; */
+            background-color: #f1f1f1;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            aspect-ratio: 1/1;
+        }
+
+        .image-container {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 60%;
+            max-width: 100dvh;
+
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+
+    <script>
+        const virtualKeyboardSupported = "virtualKeyboard" in navigator;
+        if (virtualKeyboardSupported) {
+            navigator.virtualKeyboard.overlaysContent = true;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="main-container">
+
+        <div class="square">
+            <div class="card-container">
+                <div class="card">Card 1</div>
+                <div class="card">Card 2</div>
+                <div class="card">Card 3</div>
+            </div>
+
+            <div class="image-container">
+                <img class="border"
+                    src="https://www.smartcut.co.il/wp-content/uploads/2020/05/%D7%91%D7%A8-%D7%9E%D7%99%D7%9D-%D7%97%D7%9B%D7%9D.png"
+                    alt="תיאור התמונה">
+            </div>
+
+            <form>
+                <input type="text" id="user-input" placeholder="הקלד/י את המילה כאן" title="הקלד/י את המילה כאן"
+                    autocorrect="off" autocomplete="new-password">
+            </form>
+        </div>
+
+        <div class="keyboard"></div>
+
+    </div>
+
+
+</body>
+
+</html>
