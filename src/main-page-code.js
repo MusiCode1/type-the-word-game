@@ -12,13 +12,36 @@ async function main() {
 
     setCards(word);
 
-    
+
     setImage();
     const audio = setAudio();
     setInput(word, audio);
 
     onResize();
     window.onresize = onResize;
+    window.onload = () => setTimeout(onResize, 1000);
+    window.onchange
+
+    let timeout;
+
+    const observer = new MutationObserver((mutations) => {
+
+        if(timeout){
+            clearTimeout(timeout);
+            timeout = null;
+        }
+
+        timeout = setTimeout(onResize, 1000);
+  
+    });
+
+    observer.observe(document.body, {
+        attributes: true,
+        childList: true,
+        subtree: true
+    });
+
+
 
 }
 
