@@ -6,21 +6,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Responsive Square Cards with Content</title>
 	<style>
+		:root {
+			--font-size: min(12vh, 12vw);
+		}
+
 		* {
 			box-sizing: border-box;
-			/* outline: 2px solid red; */
 		}
 
-		html {
-			overflow: hidden;
-
-		}
-
+		/* html, */
 		body {
-			height: 100vh;
+			height: 95dvh;
+			width: 100%;
 			margin: 0;
-
-			overflow: hidden;
 		}
 
 		.border {
@@ -31,10 +29,16 @@
 		}
 
 		.main-container {
-			display: flex;
+			/* display: flex; */
 			justify-content: center;
 			align-items: center;
-			margin: 0px 0px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+
+			position: relative;
+
+			/* height: 95dvh; */
 
 			/* transition: margin 0.3s; */
 		}
@@ -48,12 +52,15 @@
 			align-items: center;
 			gap: 20px;
 
-			background-color: #c0a0dd;
+			background-color: #d7e0cd;
 
 			border-radius: 50px;
+			box-shadow: 0px 2px 6px #3595bab8;
 
-			margin: 20px;
+
+			margin: 0px;
 			padding: 40px;
+
 
 			/* transition: width 0.3s; */
 
@@ -92,11 +99,22 @@
 			padding: 20px;
 
 			background-color: #b0e5e5;
+
+			font-size: var(--font-size);
+			transition: all 0.3s;
+
+			border: #426969 3px solid;
+			box-shadow: -2px 2px 6px #3595bab8;
 		}
 
+		.card-content:hover {
+			cursor: pointer;
+			transform: translateY(-30px);
+
+		}
 
 		.card-content p {
-			font-size: 400%;
+			font-family: Arial, Helvetica, sans-serif;
 		}
 
 		.image-container {
@@ -125,13 +143,13 @@
 
 		.input-container input {
 			padding: 5px;
-			font-size: 30px;
-			/* border-radius: 10px; */
 			border: 3px solid #426969;
 			outline: none;
 			transition: border-color 0.3s;
 			width: 100%;
 			text-align: center;
+
+			font-size: min(6vh, 6vw);
 		}
 	</style>
 
@@ -140,72 +158,51 @@
 		window.addEventListener('resize', handleResize);
 		window.addEventListener('load', handleResize);
 
-
-
-
 		document.addEventListener('DOMContentLoaded', function () {
-
+			handleResize();
 		});
 
 		let resizeTimeoutId = false;
 		const delay = 250;
 
 		function handleResize() {
-			clearTimeout(resizeTimeoutId);
-			resizeTimeoutId = setTimeout(resizeContentContainer, delay);
+			setTimeout(resizeElement, 0);
+			/* clearTimeout(resizeTimeoutId);
+			resizeTimeoutId = setTimeout(resizeContentContainer, delay); */
 		}
 
-		function updateElementWidth(element, heightReduction) {
+		function resizeElement() {
+			/**@type {HTMLElement}*/
+			const element = document.querySelector('.main-container');
 
-			const currentWidth = element.offsetWidth;
-			const currentHeight = element.offsetHeight;
-
-			const widthToHeightRatio = currentWidth / currentHeight;
-
-			const widthReduction = heightReduction * widthToHeightRatio;
-
-			return widthReduction;
-
-			/*  
-			const newWidth = currentWidth - widthReduction;
-		    
-			element.style.width = newWidth + 'px'; */
-
-		}
-
-		function resizeContentContainer() {
-			const mainContainer = document.querySelector('.main-container');
-
-			const margin = mainContainer.style.margin.split(' ').map(x => Number(x.replace('px', '')))[1] || 0;
-
-			const
-				availableHeight = visualViewport.height,
-				availableWidth = visualViewport.width;
-
-			const
-				containerWidth = mainContainer.clientWidth,
-				containerHeight = mainContainer.clientHeight;
-
-			const heightDifference = containerHeight - availableHeight;
-			const widthDifference = containerWidth - availableWidth;
-
-			console.log('[margin]', margin);
-			console.log('[heightDifference]', heightDifference, '[widthDifference]', widthDifference);
-
-			if (widthDifference > 0 /* || heightDifference < 0 */) {
-				mainContainer.style.margin = '0px 0px';
-				return;
+			if (!element) {
+				throw new Error(".main-container is not exist!");
 			}
 
-			if (heightDifference > 5 || heightDifference < 5) {
-				const widthReduction = updateElementWidth(mainContainer, heightDifference);
+			const
+				viewHeight = visualViewport.height,
+				viewWidth = visualViewport.width;
 
-				console.log('[widthReduction]', widthReduction, '[heightDifference]', heightDifference);
+			const
+				elementWidth = element.clientWidth,
+				elementHeight = element.clientHeight,
+				widthToHeightRatio = elementWidth / elementHeight;
 
-				const newMargin = parseInt(margin + (widthReduction/2));
+			let idealHeight = (viewHeight - 20);
+			let idealWidth = idealHeight * widthToHeightRatio;
 
-				mainContainer.style.margin = '0px ' + (newMargin) + 'px';
+			if (idealWidth > viewWidth) {
+				idealWidth = viewWidth;
+				idealHeight = idealWidth / widthToHeightRatio;
 			}
+
+
+			const newMargin = ((viewWidth - idealWidth) / 2) + 20;
+
+			element.style.marginLeft =
+				element.style.marginRight = `${Math.floor(newMargin)}px`;
+
+
 		}
 
 	</script>
@@ -218,21 +215,21 @@
 
 			<div class="card-container">
 
-				<div class="card border">
+				<div class="card">
 					<div class="card-content">
 						<p>
 							C
 						</p>
 					</div>
 				</div>
-				<div class="card border">
+				<div class="card">
 					<div class="card-content">
 						<p>
 							A
 						</p>
 					</div>
 				</div>
-				<div class="card border">
+				<div class="card">
 					<div class="card-content">
 						<p>
 							T

@@ -5,25 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>הקלד את המילה</title>
-    
-    <script src="./source.js"></script>
-    <link rel="stylesheet" href="./style.css">
+
+    <script type="module" src="./src/main-page-code.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* html, */
+        body {
+            height: 95dvh;
+            width: 100%;
+            margin: 0;
+        }
+    </style>
 
 </head>
 
 <body>
-    <div class="container">
-        <div class="cards-container">
-            <div id="cards-container"></div>
-        </div>
-        <div class="image-container">
-            <img>
-        </div>
 
-        <div class="input-container">
-            <input type="text" id="user-input" placeholder="הקלד/י את המילה כאן" title="הקלד/י את המילה כאן">
-        </div>
-    </div>
+    <div id="app"></div>
 
 </body>
 
