@@ -21,26 +21,39 @@
 			font-size: calc(var(--1v)* 15);
 			font-family: Arial;
 			font-weight: normal;
+			text-align: center;
 
 			border: #426969 3px solid;
 			box-shadow: -2px 2px 6px #3595bab8;
 			border-radius: 1vh;
 
-
-
-			text-align: center;
-
-			transition: all 0.3s;
-
-
-			/* height: 17vh; */
+			transition: transform 0.3s;
 		}
 
 		.card:hover {
 			cursor: pointer;
-			transform: translateY(-30px);
+			transform: translateY(calc((var(--1v) * 5) * -1));
 		}
-		
+
+		.card.correct {
+			animation: blinking-border 1s linear infinite;
+
+		}
+
+		@keyframes blinking-border {
+
+			0% {
+				box-shadow: 0px 0px 15px 5px #ff0000cc;
+			}
+
+			50% {
+				box-shadow: -2px 2px 6px #ffffff00;
+			}
+
+			100% {
+				box-shadow: 0px 0px 15px 5px #ff0000cc;
+			}
+		}
 	</style>
 	<div class="card"></div>
 </div>

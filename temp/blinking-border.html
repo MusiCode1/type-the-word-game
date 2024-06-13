@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+	<style>
+
+		@keyframes blink {
+			0% {
+				box-shadow: 0 0 5px 2px rgba(255, 0, 0, 0.8);
+			}
+	
+			50% {
+				box-shadow: 0 0 5px 2px rgba(255, 0, 0, 0);
+			}
+	
+			100% {
+				box-shadow: 0 0 5px 2px #ff0000cc;
+			}
+		}
+	
+		.blinking-border {
+			animation: blink 1s linear infinite;
+		}
+
+		.element {
+			width: 100px;
+			height: 100px;
+		}
+
+		body {
+			margin: 0;
+
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+	<div class="blinking-border">
+		<div class="element"></div>
+	</div>
+</body>
+
