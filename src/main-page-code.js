@@ -6,33 +6,33 @@ document.addEventListener('DOMContentLoaded', main);
 
 async function main() {
 
-    const word = 'לחם';
+    const word = 'מים';
 
     await setMainTemplate();
 
     setCards(word);
 
-
     setImage();
+
     const audio = setAudio();
     setInput(word, audio);
 
     onResize();
     window.onresize = onResize;
-    window.onload = () => setTimeout(onResize, 1000);
-    window.onchange
+
+    setDisplay();
 
     let timeout;
 
     const observer = new MutationObserver((mutations) => {
 
-        if(timeout){
+        if (timeout) {
             clearTimeout(timeout);
             timeout = null;
         }
 
-        timeout = setTimeout(onResize, 1000);
-  
+        timeout = setTimeout(onResize, 0);
+
     });
 
     observer.observe(document.body, {
@@ -45,7 +45,11 @@ async function main() {
 
 }
 
+function setDisplay(){
 
+    const mainContent = document.querySelector('#main-content');
+    mainContent.classList.add('display');
+}
 
 function setAudio() {
 
@@ -65,9 +69,9 @@ function setImage() {
 async function setMainTemplate() {
     const templateContent = await getTemplate('./src/components/main.html');
 
-    const app = document.getElementById('app');
+    const body = document.querySelector('body');
 
-    app.appendChild(templateContent);
+    body.appendChild(templateContent);
 }
 
 function setCards(correctWord) {
@@ -109,7 +113,15 @@ function setInput(correctWord, audio) {
 }
 
 function onResize() {
-    resizeElement(document.querySelector('.main-container'));
+
+    const element = document.querySelector('.main-container');
+    const { margin, viewHeight, viewWidth } = resizeElement(element);
+
+    const vp1 = Math.min(viewHeight, viewWidth) * 0.01;
+
+    element.style.marginLeft =
+        element.style.marginRight = `${(margin + (vp1 * 5))}px`;
+
 }
 
 /**
@@ -132,6 +144,8 @@ function resizeElement(element) {
         elementHeight = element.clientHeight,
         widthToHeightRatio = elementWidth / elementHeight;
 
+    console.log('[View Width]', viewWidth, '[View Height]', viewHeight);
+
     let idealHeight = (viewHeight - 20);
     let idealWidth = idealHeight * widthToHeightRatio;
 
@@ -140,11 +154,21 @@ function resizeElement(element) {
         idealHeight = idealWidth / widthToHeightRatio;
     }
 
+    const newMargin = ((viewWidth - idealWidth) / 2);
 
-    const newMargin = ((viewWidth - idealWidth) / 2) + 20;
+    console.log('idealWidth', idealWidth, 'idealHeight', idealHeight);
 
-    element.style.marginLeft =
-        element.style.marginRight = `${Math.floor(newMargin)}px`;
+    console.log('newMargin', newMargin);
 
+    return {
+        margin: Math.floor(newMargin),
 
+        viewHeight,
+        viewWidth,
+        elementWidth,
+        elementHeight,
+        widthToHeightRatio,
+        idealHeight,
+        idealWidth
+    };
 }
