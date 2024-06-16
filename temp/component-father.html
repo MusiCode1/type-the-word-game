@@ -7,19 +7,37 @@
 
     <script type="module">
         (async () => {
+
+            await getComponent("./component-child.html");
+
+        })();
+
+        async function getComponent(url) {
+
             const templateElement = document.createElement('template');
 
-            const htmlText = await fetch("./component-child.html").then(r => r.text());
+            const htmlText = await fetch(url, {
+                headers: {
+                    'Content-Type': 'text/html'
+                }
+            }).then(r => r.text());
 
             templateElement.innerHTML = htmlText;
 
-            const script = templateElement.content.firstChild.content.querySelector('script');
+            const componentContent = templateElement.content.
+                firstChild.content;
 
-            const module = await importModuleFromScriptTag(script);
+            const scripts = componentContent.querySelectorAll('script');
 
-            module.Component(templateElement.content.firstChild.content)
+            for (const script of scripts) {
+                const module = await importModuleFromScriptTag(script);
+                script.remove();
 
-        })();
+                if (module.Component) {
+                    module.Component(componentContent)
+                }
+            }
+        }
 
         async function importModuleFromScriptTag(script) {
 
@@ -29,7 +47,7 @@
 
             const module = await import(urlObj);
 
-            script.remove();
+            URL.revokeObjectURL(urlObj);
 
             return module;
 
@@ -38,7 +56,7 @@
 </head>
 
 <body>
-    <my-element></my-element>
+    <header-element></header-element>
 </body>
 
 </html>

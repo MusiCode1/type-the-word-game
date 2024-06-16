@@ -1,5 +1,39 @@
 <template>
 
+    <script type="module">
+
+        const componentName = "app-header";
+
+        export function Component(element) {
+            let elementRoot;
+
+            class Header extends HTMLElement {
+                constructor() {
+                    super()
+                    this.attachShadow({ mode: "open" });
+                    this.shadowRoot.appendChild(element);
+                    const myComponent = this.shadowRoot;
+
+                    myComponent.querySelector(".full-screen button")
+                        .onclick = toggleFullscreen;
+                }
+            }
+
+            customElements.define(componentName, Header);
+
+            return elementRoot;
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+    </script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -52,38 +86,18 @@
         .full-screen img {
             height: 100%;
         }
+
+        .background {
+            background-color: #eff3d8;
+            height: 100dvh;
+            position: fixed;
+            bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
     </style>
-
-    <script type="module">
-
-        export function Component(element) {
-
-            class Header extends HTMLElement {
-                constructor() {
-                    super()
-                    this.attachShadow({ mode: "open" });
-                    this.shadowRoot.appendChild(element);
-                    const myComponent = this.shadowRoot;
-
-                    myComponent.querySelector(".full-screen button")
-                        .onclick = toggleFullscreen;
-                }
-            }
-
-            customElements.define("header-element", Header);
-
-            return Header;
-        }
-
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
-            } else {
-                document.exitFullscreen();
-            }
-        }
-
-    </script>
 
     <header class="">
         <h1>הקלדת מילים</h1>
@@ -93,4 +107,6 @@
             </button>
         </div>
     </header>
+
+    <div class="background"> </div>
 </template>

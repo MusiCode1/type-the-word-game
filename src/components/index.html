@@ -1,3 +1,41 @@
-<header-element>test</header-element>
+<template>
+    <script type="module">
 
-<welcome-el></welcome-el>
+        const scriptPath = `${window.location.origin}/src/scripts/get-component.js`;
+
+        const { getComponent, setComponent, ComponentElement, Router } = await import(scriptPath);
+
+        const components = {};
+
+        ['header', 'welcome', 'game'].forEach((componentName) => {
+            components[componentName] =
+                getComponent(`./src/components/${componentName}.html`);
+        })
+
+        const componentName = "app-main";
+
+        const router = new Router();
+
+        globalThis.router = router;
+
+
+        export const Component = (element) => {
+
+            class MainComponent extends ComponentElement {
+                constructor() {
+                    super(element);
+                    const rootElement = this.shadowRoot;
+
+                    router.subscribe(rootElement)
+
+                }
+            }
+
+            customElements.define(componentName, MainComponent);
+        };
+
+    </script>
+    <app-header></app-header>
+
+
+</template>
