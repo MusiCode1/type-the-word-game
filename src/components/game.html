@@ -1,8 +1,8 @@
 <template>
     <div id="main-content">
         <script>
-            const url = url.href.substring(0, url.href.lastIndexOf('/'));
-            
+            const url = location.href.substring(0, location.href.lastIndexOf('/'));
+
             const scriptPath = `${url}/src/scripts/get-component.js`;
 
             const { setComponent } = await import(scriptPath);
