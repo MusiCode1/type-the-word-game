@@ -10,3 +10,19 @@ export async function getTemplate(templatePath) {
 
     return templateElement.content.cloneNode(true);
 }
+
+const a = `
+<style></
+
+`;
+
+function html(strings, ...values) {
+    let str = '';
+    strings.forEach((string, i) => {
+      str += string + (values[i] || '');
+    });
+    return str;
+  }
+
+  html`
+  fff`

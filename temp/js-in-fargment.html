@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+
+        const var1 = 123;
+
+        addEventListener("load", () => {
+            const template = document.querySelector("template");
+
+            const div = document.createElement("div")
+
+            const shadow = div.attachShadow({ mode: "open" });
+
+            shadow.appendChild(template.content.cloneNode(true));
+
+            console.log("append");
+
+            document.querySelector("body").appendChild(div)
+        })
+
+        debugger
+    </script>
+
+    <template>
+        <style>
+            div {
+                height: 100dvh;
+                background-color: black;
+            }
+        </style>
+        <script>
+            console.log("test script...");
+
+            const var2 = 123;
+        </script>
+        <script type="module">
+            const var3 = 123;
+            console.log($, $$);
+        </script>
+        <script src="../src/print-test.js"></script>
+        <div></div>
+    </template>
+</head>
+
+<body>
+
+</body>
+
+</html>

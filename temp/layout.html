@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            margin: 0;
+        }
+
+        header {
+            background-color: rgb(248, 220, 221);
+
+            border-bottom: 3px solid #a37274;
+
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+
+            height: 7vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .full-screen {
+            height: 100%;
+            position: absolute;
+            left: 0;
+            padding: 9px;
+        }
+
+        .full-screen button {
+            height: 100%;
+            background-color: transparent;
+            border-radius: 10px;
+            border-color: rgba(0, 0, 0, 0.232);
+            background-color: rgba(0, 0, 0, 5%);
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        .full-screen img {
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="">
+        <h1>הקלדת מילים</h1>
+        <div class="full-screen">
+            <button>
+                <img src="../src/SVGs/full-screen.svg">
+            </button>
+        </div>
+    </header>
+    <slot></slot>
+</body>
+
+</html>

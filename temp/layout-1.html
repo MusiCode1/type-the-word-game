@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+
+
+    <script type="module">
+
+        main();
+
+        async function main() {
+            const layout = await getTemplate("../src/components/layout.html");
+            const index = await getTemplate("../src/components/index.html");
+            const game = await getTemplate("../src/components/main.html");
+
+
+            const script = layout.querySelector("script").cloneNode(true);
+            globalThis.script = script;
+
+            const newScript = document.createElement('script');
+
+            newScript.textContent = script.textContent;
+
+            document.head.appendChild(newScript);
+
+            setCustomElement("main-el", index);
+            setCustomElement("game-el", game);
+
+
+
+
+            function setCustomElement(elementTag, element) {
+
+                class Element extends HTMLElement {
+                    constructor() {
+                        super()
+                        this.attachShadow({ mode: "open" });
+                        this.shadowRoot.appendChild(element);
+                    }
+                }
+
+                customElements.define(elementTag, Element)
+            }
+        }
+
+        async function getTemplate(templatePath) {
+            const templateElement = document.createElement('template');
+
+            const templateHTML = await fetch(templatePath, {
+                cache: 'default'
+            })
+                .then(response => response.text());
+            templateElement.innerHTML = templateHTML;
+
+            return templateElement.content.cloneNode(true);
+        }
+
+    </script>
+</head>
+
+<body>
+    <main-el></main-el>
+
+</body>
+
+</html>

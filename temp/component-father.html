@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="module">
+        (async () => {
+            const templateElement = document.createElement('template');
+
+            const htmlText = await fetch("./component-child.html").then(r => r.text());
+
+            templateElement.innerHTML = htmlText;
+
+            const script = templateElement.content.firstChild.content.querySelector('script');
+
+            const module = await importModuleFromScriptTag(script);
+
+            module.Component(templateElement.content.firstChild.content)
+
+        })();
+
+        async function importModuleFromScriptTag(script) {
+
+            const blob = new Blob([script.textContent], { type: "application/javascript" });
+
+            const urlObj = URL.createObjectURL(blob);
+
+            const module = await import(urlObj);
+
+            script.remove();
+
+            return module;
+
+        }
+    </script>
+</head>
+
+<body>
+    <my-element></my-element>
+</body>
+
+</html>
