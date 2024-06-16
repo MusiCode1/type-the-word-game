@@ -2,7 +2,9 @@
 
     <script type="module">
 
-        const scriptPath = `${window.location.origin}/src/scripts/get-component.js`;
+        const url = url.href.substring(0, url.href.lastIndexOf('/'));
+
+        const scriptPath = `${url}/src/scripts/get-component.js`;
 
         const { setComponent } = await import(scriptPath);
 
@@ -24,6 +26,7 @@
 
             align-content: center;
         }
+
         section h1 {
             text-align: center;
             color: white;
