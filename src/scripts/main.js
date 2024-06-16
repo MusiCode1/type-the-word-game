@@ -1,10 +1,15 @@
 import { getComponent } from "./get-component.js";
 
+const url = location.href.substring(0, location.href.lastIndexOf('/'));
+
+
 main()
 
 async function main() {
 
-    const Element = await getComponent("../src/components/index.html");
+    const scriptPath = `${url}/src/components/index.html`;
+
+    const Element = await getComponent(scriptPath);
 
     setMainElement()
 
@@ -17,6 +22,3 @@ function setMainElement() {
     document.querySelector(".spinner").remove();
     document.body.appendChild(mainElement);
 }
-
-const url = new URL("https://musicode1.github.io/type-the-word-game/src/scripts/main.js");
-const pathBeforeLastSlash = url.href.substring(0, url.href.lastIndexOf('/'));
