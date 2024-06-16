@@ -1,6 +1,7 @@
 <template>
 
     <script type="module">
+        const url = location.href.substring(0, location.href.lastIndexOf('/'));
 
         const componentName = "app-header";
 
@@ -16,6 +17,7 @@
 
                     myComponent.querySelector(".full-screen button")
                         .onclick = toggleFullscreen;
+                    myComponent.querySelector("img").src = `${url}/src/SVGs/full-screen.svg`;
                 }
             }
 
@@ -103,7 +105,7 @@
         <h1>הקלדת מילים</h1>
         <div class="full-screen">
             <button>
-                <img src="../src/SVGs/full-screen.svg">
+                <img>
             </button>
         </div>
     </header>
