@@ -80,7 +80,6 @@ export class ComponentElement extends HTMLElement {
 }
 
 export class Router {
-    #subscribeFns = [];
     lastComponent;
     rootElement;
     #isRunning = false;
